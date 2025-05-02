@@ -4,8 +4,8 @@
 # server in each group is considered to be the first
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
-role :app, %w{ui1.prd.ontoportal.org ui2.prd.ontoportal.org}
-role :db, %w{ui1.prd.ontoportal.org} # sufficient to run db:migrate only on one system
+role :app, %w{ontoportal-astro.eu}
+role :db, %w{ontoportal-astro.eu} # sufficient to run db:migrate only on one system
 set :branch, ENV.include?('BRANCH') ? ENV['BRANCH'] : 'master'
 # Extended Server Syntax
 # ======================
