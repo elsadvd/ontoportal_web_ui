@@ -13,7 +13,7 @@ set :deploy_via, :remote_cache
 
 
 # Default deploy_to directory is /var/www/my_app
-set :deploy_to, "/opt/ontoportal/#{fetch(:application)}"
+set :deploy_to, "/opt/ontoportal/bioportal_web_ui"
 
 # Default value for :scm is :git
 # set :scm, :git
