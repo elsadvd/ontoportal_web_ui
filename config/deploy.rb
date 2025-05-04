@@ -33,7 +33,7 @@ set :log_level, :error
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache public/system public/assets config/locales}
-set :linked_dirs, %w{log tmp/pids tmp/cache public/system public/assets}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/system public/assets}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -93,7 +93,7 @@ set :ssh_options, {
 }
 
 #private git repo for configuraiton
-PRIVATE_CONFIG_REPO = ENV.include?('PRIVATE_CONFIG_REPO') ? ENV['PRIVATE_CONFIG_REPO'] : 'https://your_github_pat_token@github.com/your_organization/ontoportal-configs.git'
+PRIVATE_CONFIG_REPO = ENV.include?('PRIVATE_CONFIG_REPO') ? ENV['PRIVATE_CONFIG_REPO'] : "https://your_github_pat_token@github.com/#{fetch(:author)}/ontoportal-configs.git"
 
 namespace :deploy do
   desc 'display remote system env vars'
