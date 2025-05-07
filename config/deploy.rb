@@ -28,8 +28,8 @@ set :log_level, :error
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, 'config/database.yml', 'config/bioportal_config_appliance.rb'
-# append :linked_files, 'config/secrets.yml', 'config/credentials/appliance.key', 'config/credentials/appliance.yml.enc'
+append :linked_files, 'config/database.yml', 'config/bioportal_config_appliance.rb'
+append :linked_files, 'config/secrets.yml', 'config/credentials/appliance.key', 'config/credentials/appliance.yml.enc'
 
 # Default value for linked_dirs is []
 # set :linked_dirs, %w{bin log tmp/pids tmp/cache public/system public/assets config/locales}
@@ -86,14 +86,14 @@ set :keep_assets, 3
 # JUMPBOX_PROXY = "#{SSH_JUMPHOST_USER}@#{SSH_JUMPHOST}"
 set :ssh_options, {
   user: 'ontoportal',
-  keys: %w(config/deploy_id_rsa),
-  auth_methods: %w(publickey),
+  # keys: %w(config/deploy_id_rsa),
+  # auth_methods: %w(publickey),
   # forward_agent: 'true',
   # proxy: Net::SSH::Proxy::Command.new("ssh #{JUMPBOX_PROXY} -W %h:%p")
 }
 
 #private git repo for configuraiton
-PRIVATE_CONFIG_REPO = ENV.include?('PRIVATE_CONFIG_REPO') ? ENV['PRIVATE_CONFIG_REPO'] : "https://your_github_pat_token@github.com/#{fetch(:author)}/ontoportal-configs.git"
+# PRIVATE_CONFIG_REPO = ENV.include?('PRIVATE_CONFIG_REPO') ? ENV['PRIVATE_CONFIG_REPO'] : "https://your_github_pat_token@github.com/#{fetch(:author)}/ontoportal-configs.git"
 
 namespace :deploy do
   desc 'display remote system env vars'
@@ -104,23 +104,23 @@ namespace :deploy do
     end
   end
 
-  desc 'Incorporate the bioportal_conf private repository content'
-  # Get cofiguration from repo if PRIVATE_CONFIG_REPO env var is set
-  # or get config from local directory if LOCAL_CONFIG_PATH env var is set
-  task :get_config do
-    if defined?(PRIVATE_CONFIG_REPO)
-      TMP_CONFIG_PATH = "/tmp/#{SecureRandom.hex(15)}".freeze
-      on roles(:app) do
-        execute "git clone -q #{PRIVATE_CONFIG_REPO} #{TMP_CONFIG_PATH}"
-        execute "rsync -a #{TMP_CONFIG_PATH}/#{fetch(:config_folder_path)}/ #{release_path}/"
-        execute "rm -rf #{TMP_CONFIG_PATH}"
-      end
-    elsif defined?(LOCAL_CONFIG_PATH)
-      on roles(:app) do
-        execute "rsync -a #{LOCAL_CONFIG_PATH}/#{fetch(:application)}/ #{release_path}/"
-      end
-    end
-  end
+  # desc 'Incorporate the bioportal_conf private repository content'
+  # # Get cofiguration from repo if PRIVATE_CONFIG_REPO env var is set
+  # # or get config from local directory if LOCAL_CONFIG_PATH env var is set
+  # task :get_config do
+  #   if defined?(PRIVATE_CONFIG_REPO)
+  #     TMP_CONFIG_PATH = "/tmp/#{SecureRandom.hex(15)}".freeze
+  #     on roles(:app) do
+  #       execute "git clone -q #{PRIVATE_CONFIG_REPO} #{TMP_CONFIG_PATH}"
+  #       execute "rsync -a #{TMP_CONFIG_PATH}/#{fetch(:config_folder_path)}/ #{release_path}/"
+  #       execute "rm -rf #{TMP_CONFIG_PATH}"
+  #     end
+  #   elsif defined?(LOCAL_CONFIG_PATH)
+  #     on roles(:app) do
+  #       execute "rsync -a #{LOCAL_CONFIG_PATH}/#{fetch(:application)}/ #{release_path}/"
+  #     end
+  #   end
+  # end
 
   desc 'Restart application'
   task :restart do
@@ -131,15 +131,13 @@ namespace :deploy do
   end
 
 
-  after :updating, :get_config
+  # after :updating, :get_config
   after :publishing, :restart
+  after :restart, :clear_cache 
 
-  after :restart, :clear_cache do
-    on roles(:app), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+  task :clear_cache do
+    on roles(:app), in: :sequence, wait: 5 do
+        execute 'sudo opclearcaches'
     end
   end
 end
