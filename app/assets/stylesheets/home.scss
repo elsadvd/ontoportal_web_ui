@@ -89,7 +89,7 @@ i.fa.fa-caret-square-o-down {
 .home-header-title{
   position: absolute;
   z-index: 4;
-  width: 500px;
+  width: 600px;
   margin-right: 664px;
   margin-top: 123px;
   opacity: 0;
@@ -476,6 +476,7 @@ i.fa.fa-caret-square-o-down {
 .home-support-items{
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   img{
     object-fit: scale-down;
     width: 100px;
