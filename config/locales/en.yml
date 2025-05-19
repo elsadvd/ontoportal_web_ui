@@ -549,8 +549,7 @@ en:
     include_email: Please include your email
     include_name: Please include your name
     index:
-      tagline: The home of ontologies and semantic artefacts in agri-food and related
-        domains.
+      tagline: The home of ontologies and semantic artefacts in astronomy and related domains.
       title: Welcome to %{site}
       welcome: Welcome to %{site},
     individuals: Individuals
@@ -1027,7 +1026,7 @@ en:
       steps failed, here are the current statuses: %{status}'
     ontology_processing_failed: 'The ontology processing failed, with the current
       statuses: %{status}'
-    ontology_search_prompt: Search an ontology or a term (e.g., plant height)
+    ontology_search_prompt: Search an ontology or term (e.g., exoplanet)
     ontology_submitted: Ontology submitted successfully!
     ontology_types: Ontology types
     outside: outside

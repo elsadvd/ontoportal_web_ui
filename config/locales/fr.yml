@@ -564,8 +564,7 @@ fr:
     include_email: Veuillez inclure votre email
     include_name: Veuillez inclure votre nom
     index:
-      tagline: Le foyer des ontologies et des artefacts sémantiques dans l'agroalimentaire
-        et les domaines connexes.
+      tagline: Le foyer des ontologies et des artefacts sémantiques en astronomie et dans les domaines connexes.
       title: Bienvenue sur %{site}
       welcome: Bienvenue sur %{site},
     individuals: Individus
@@ -1064,8 +1063,7 @@ fr:
       étapes de traitement ont échoué, voici les statuts actuels : %{status}'
     ontology_processing_failed: 'Le traitement de l''ontologie a échoué, avec les
       statuts suivants : %{status}'
-    ontology_search_prompt: Rechercher une ontologie ou un terme (e.g., hauteur de
-      plante)
+    ontology_search_prompt: Rechercher une ontologie ou un terme (e.g., exoplanet)
     ontology_submitted: Ontologie soumise avec succès !
     ontology_types: Types d'ontologies
     outside: extérieur
