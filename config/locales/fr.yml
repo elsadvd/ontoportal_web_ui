@@ -283,14 +283,7 @@ fr:
     negation: Négation
     ontology: Ontologie
     options: Options
-    sample_text: There has been many recent studies on the use of microbial antagonists
-      to control diseases incited by soilborne and airborne plant pathogenic bacteria
-      and fungi, in an attempt to replace existing methods of chemical control and
-      avoid extensive use of fungicides, which often lead to resistance in plant pathogens.
-      In agriculture, plant growth-promoting and biocontrol microorganisms have emerged
-      as safe alternatives to chemical pesticides. Streptomyces spp. and their metabolites
-      may have great potential as excellent agents for controlling various fungal
-      and bacterial phytopathogens.
+    sample_text: A precise and accurate determination of the Hubble constant based on Cepheid variables requires proper characterization of many sources of systematic error. One of these is stellar blending, which biases the measured fluxes of Cepheids and the resulting distance estimates. We study the blending of 149 Cepheid variables in M33 by matching archival Hubble Space Telescope data with images obtained at the Wisconsin-Indiana-Yale-NOAO (WIYN) 3.5m telescope, which differ by a factor of 10 in angular resolution. We find that 55%+/-4% of the Cepheids have no detectable nearby companions that could bias the WIYN V-band photometry, while the fraction of Cepheids affected below the 10% level is 73%+/-4%. The corresponding values for the I band are 60%+/-4% and 72%+/-4%, respectively. We find no statistically significant difference in blending statistics as a function of period or surface brightness. Additionally, we report all the detected companions within 2" of the Cepheids (equivalent to 9pc at the distance of M33) which may be used to derive empirical blending corrections for Cepheids at larger distances.
     score: Score
     score_threshold: Filtrer par seuil de score
     select_ontologies: Sélectionner des ontologies
